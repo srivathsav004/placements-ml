@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Prediction System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+
+        <main class="main">
+            <div class="prediction-card">
+                <div class="card-header">
+                    <h2>Check Your Placement Probability</h2>
+                    <p>Enter your academic details to get an instant prediction</p>
+                </div>
+
+                <form id="predictionForm" class="form">
+                    <div class="form-group">
+                        <label for="cgpa" class="form-label">
+                            <i class="fas fa-chart-line"></i>
+                            CGPA (Cumulative Grade Point Average)
+                        </label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="number" 
+                                id="cgpa" 
+                                name="cgpa" 
+                                step="0.1" 
+                                min="5" 
+                                max="10" 
+                                placeholder="Enter your CGPA (5.0 - 10.0)"
+                                class="form-input"
+                                required
+                            >
+                            <span class="input-icon">
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                        <div class="cgpa-display">
+                            <span id="cgpaValue">0.0</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-history"></i>
+                            History of Backlogs
+                        </label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="noBacklogs" name="backlogs" value="0" checked>
+                                <label for="noBacklogs" class="radio-label">
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">
+                                        <i class="fas fa-check-circle text-success"></i>
+                                        No Backlogs
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="hasBacklogs" name="backlogs" value="1">
+                                <label for="hasBacklogs" class="radio-label">
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">
+                                        <i class="fas fa-exclamation-triangle text-warning"></i>
+                                        Has Backlogs
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="predict-btn" id="predictBtn">
+                        <span class="btn-text">
+                            <i class="fas fa-magic"></i>
+                            Predict Placement
+                        </span>
+                        <div class="btn-loader" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </button>
+                </form>
+
+                <div id="result" class="result-section" style="display: none;">
+                    <div class="result-card">
+                        <div class="result-header">
+                            <div class="result-icon" id="resultIcon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3 id="resultTitle">Prediction Result</h3>
+                        </div>
+                        <div class="result-content">
+                            <div class="probability-container">
+                                <div class="probability-circle" id="probabilityCircle">
+                                    <span class="probability-text" id="probabilityText">0%</span>
+                                </div>
+                                <p class="probability-label" id="probabilityLabel">Placement Probability</p>
+                            </div>
+                            <div class="result-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">CGPA:</span>
+                                    <span class="detail-value" id="resultCGPA">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Backlogs:</span>
+                                    <span class="detail-value" id="resultBacklogs">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Prediction:</span>
+                                    <span class="detail-value" id="resultPrediction">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recommendation" id="recommendation">
+                            <h4><i class="fas fa-lightbulb"></i> Recommendations</h4>
+                            <ul id="recommendationList">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 PlacementPredictor. Built with Machine Learning. Model Accuracy: 68.7%</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
